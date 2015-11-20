@@ -17,12 +17,15 @@ mean.chr <- function(x){
 lopex.dat <- lopex.dat[,lapply(.SD, mean.chr), by=sample_id]
 
 # Merge Lopex and Angers chemistry data
-common.cols <- intersect(colnames(angers.dat), colnames(lopex.dat), colnames(fft.dat))
+common.cols <- intersect(colnames(angers.dat), colnames(lopex.dat))
 setkeyv(angers.dat, common.cols)
 setkeyv(lopex.dat, common.cols)
+both.dat <- merge(angers.dat, lopex.dat, all=T)
+
+common.cols <- intersect(colnames(both.dat), colnames(fft.dat))
+setkeyv(both.dat, common.cols)
 setkeyv(fft.dat, common.cols)
-both1.dat <- merge(angers.dat, lopex.dat, all=T)
-both.dat <- merge(both1.dat, fft.dat, all=T)
+both.dat <- merge(both.dat, fft.dat, all=T)
 
 # Merge with results data frame
 setkey(results, sample_id)
