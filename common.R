@@ -32,4 +32,30 @@ setkey(results, sample_id)
 setkey(both.dat, sample_id)
 dat <- results[both.dat]
 
-
+# Set value columns
+value.cols <- c(
+               "leaf_nlayers",
+               "leaf_chlorophyll_a",
+               "leaf_chlorophyll_b",
+               "leaf_chlorophyll_total",
+               "leaf_carotenoid_total",
+               "leaf_water_content",
+               "LMA",
+               "leafC",
+               "leafO",
+               "leafH",
+               "leafN",
+               "c2n_leaf",
+               "leaf_protein_percent",
+               "leaf_cellulose_percent",
+               "leaf_lignin_percent",
+               "leaf_starch_percent",
+               "leaf_fiber_percent",
+               "leaf_deltaN15",
+               "N.mu",
+               "Cab.mu",
+               "Car.mu",
+               "Cw.mu",
+               "Cm.mu")
+dat.sub <- dat[, value.cols, with=F]
+dat.mat <- as.matrix(dat.sub)

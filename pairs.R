@@ -9,7 +9,7 @@ pairscols <- c("leaf_nlayers", "leaf_chlorophyll_a", "leaf_chlorophyll_b",
 
 library(combinat)
 
-colpairs <- permn(pairscols, 2)
+colpairs <- combn(pairscols, 2)
 pdf("allpairs.pdf")
 for(i in 1:ncol(colpairs)){
     print(colpairs[,i])
